@@ -5,3 +5,8 @@ print "found %d devices" % len(nearby_devices)
 
 for addr, name in nearby_devices:
 	print "%s - %s" % (addr, name)
+
+def send_arduino():
+	print("Sending signals to the Arduino")
+
+
