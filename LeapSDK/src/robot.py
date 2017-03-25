@@ -1,10 +1,9 @@
 import sys
-from importLeap import pyLeap
-from listener import Listener
+from leapMotion import importLeap, leapListener
 
 def controller():
-    listener = Listener()
-    controller = pyLeap.Controller()
+    listener = leapListener.Listener()
+    controller = importLeap.pyLeap.Controller()
 
     controller.add_listener(listener)
 
