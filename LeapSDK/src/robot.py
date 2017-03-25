@@ -5,9 +5,11 @@ sys.path.insert(0, "../lib/x64")
 import Leap, thread, time
 
 from LeapListener import LeapListener
-
+from RobotArm import RobotArm
 
 def main():
+
+    robotArm = RobotArm()
     # Create a sample listener and controller
     leapListener = LeapListener()
     controller = Leap.Controller()

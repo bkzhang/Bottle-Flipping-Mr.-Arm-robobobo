@@ -43,6 +43,29 @@ class LeapListener(Leap.Listener):
     def on_exit(self, controller):
         print "Exited"
 
+    # For some reason the axis are reversed?
+    
+    def is_fist(self, hand):
+        for finger in hand.fingers: # skip the thumb
+            if self.finger_names[finger.type] == "Thumb": # skip thumb
+                thumb_distal = finger.bone(3)
+                if thumb_distal.direction.x < 0:
+                    #print("Right thumb is pointing right")
+                else:
+                    #print("Right thumb is pointing left")
+                    return False
+            else:
+                distal = finger.bone(3) # distal is the tip bone
+                #print(distal.direction)
+                if distal.direction.z < 0:
+                    #print("finger is pointing towards user")
+                else:
+                    #print("finger is pointing away from user")
+                    return False
+        print("Fist detected")
+        return True # Hand is making a fist
+
+
     def on_frame(self, controller):
         # Get the most recent frame and report some basic information
         frame = controller.frame()
@@ -56,16 +79,20 @@ class LeapListener(Leap.Listener):
             if hand.is_left:
                 break
 
-            print "Right palm position: %s" % (hand.palm_position)
+            #print "Right palm position: %s" % (hand.palm_position)
 
             # Get the hand's normal vector and direction
             normal = hand.palm_normal
             direction = hand.direction
 
+            self.is_fist(hand)
+
+            # Send the pitch of the hand to the arduino
             if 0:
             # Calculate the hand's pitch, roll, and yaw angles
                 print "  pitch: %f degrees, roll: %f degrees, yaw: %f degrees" % (direction.pitch * Leap.RAD_TO_DEG, normal.roll * Leap.RAD_TO_DEG, direction.yaw * Leap.RAD_TO_DEG)
 
+            # Send the direction of the arm to the arduino
             # Get arm bone
             arm = hand.arm
             if 0:
@@ -84,13 +111,18 @@ class LeapListener(Leap.Listener):
                         finger.width)
 
                 # Get bones
+                
                 for b in range(0, 4):
                     bone = finger.bone(b)
-                    print "      Bone: %s, start: %s, end: %s, direction: %s" % (
-                        self.bone_names[bone.type],
-                        bone.prev_joint,
-                        bone.next_joint,
-                        bone.direction)
+                    if 0:
+                        print "      Bone: %s, start: %s, end: %s, direction: %s" % (
+                            self.bone_names[bone.type],
+                            bone.prev_joint,
+                            bone.next_joint,
+                            bone.direction)
+		# Check the distal bone for each finger
+		# If the direction of the bone is towards the user (in the positive z direction)
+		# Then it's likely that it's a closed fist
 
         # Get tools
         #for tool in frame.tools:
