@@ -15,5 +15,6 @@ def controller():
     finally:
         controller.remove_listener(listener)
 
+
 if __name__ == '__main__':
     controller()

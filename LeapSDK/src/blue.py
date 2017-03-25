@@ -7,6 +7,7 @@ port = 1
 def connect():
     print("Discovering nearby devices")
     nearby_devices = bluetooth.discover_devices()
+    print(len(nearby_devices))
     for device in nearby_devices:
         if target_name == bluetooth.lookup_name(device):
             target_address = device
