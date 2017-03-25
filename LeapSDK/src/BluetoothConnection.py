@@ -24,6 +24,7 @@ class BluetoothConnection():
         sock.connect(target_address, port)
 
     def __init__(self):
+        print("BluetoothConnection instantiated")
         self.connect()
 
     def send_arduino(self, message):
