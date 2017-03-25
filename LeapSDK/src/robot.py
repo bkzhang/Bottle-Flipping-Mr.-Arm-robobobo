@@ -1,20 +1,30 @@
-import sys
-from leapMotion import importLeap, leapListener
+import os, sys
+sys.path.insert(0, "../lib")
+sys.path.insert(0, "../lib/x64")
 
-def controller():
-    listener = leapListener.Listener()
-    controller = importLeap.pyLeap.Controller()
+import Leap, thread, time
 
-    controller.add_listener(listener)
+from LeapListener import LeapListener
 
-    print "Press any key to quit"
+
+def main():
+    # Create a sample listener and controller
+    leapListener = LeapListener()
+    controller = Leap.Controller()
+
+    # Have the sample listener receive events from the controller
+    controller.add_listener(leapListener)
+
+    # Keep this process running until Enter is pressed
+    print "Press Enter to quit..."
     try:
         sys.stdin.readline()
     except KeyboardInterrupt:
         pass
     finally:
+        # Remove the sample listener when done
         controller.remove_listener(listener)
 
 
-if __name__ == '__main__':
-    controller()
+if __name__ == "__main__":
+    main()
