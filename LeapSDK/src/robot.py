@@ -23,7 +23,7 @@ def main():
         pass
     finally:
         # Remove the sample listener when done
-        controller.remove_listener(listener)
+        controller.remove_listener(leapListener)
 
 
 if __name__ == "__main__":
