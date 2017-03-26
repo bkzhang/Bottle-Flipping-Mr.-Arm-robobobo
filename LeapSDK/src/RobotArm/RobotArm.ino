@@ -3,7 +3,7 @@
 
 const int NUM_SERVOS = 6;
 const int servo_pin_nums[NUM_SERVOS] = {4,5,6,7,8,9};
-const int default_servo_angles[NUM_SERVOS] = {0,0,0,0,0,0};
+const int default_servo_angles[NUM_SERVOS] = {0,0,20,0,0,0};
 Servo servo_array[NUM_SERVOS];
 int servo_angles[NUM_SERVOS];
 
@@ -44,7 +44,7 @@ void setup() {
   
   servo0.write(0);
   servo1.write(0);
-  servo2.write(0);
+  servo2.write(20);
   servo3.write(0);
   servo4.write(0);
   servo5.write(0);

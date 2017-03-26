@@ -9,8 +9,9 @@ from inverse_kinematics import end_effector_position, calculateInverseKinematics
 
 
 PRINT = 0
+PINCER_ANGLE = 55
 
-COM_PORT = '/dev/ttyUSB5'
+COM_PORT = '/dev/ttyUSB6'
 BAUD_RATE = 9600
 
 class LeapListener(Leap.Listener):
@@ -76,7 +77,7 @@ class LeapListener(Leap.Listener):
             if hand.is_left: 
                 # if a left hand is detected, then reset
                 print("Left hand shown, reset robot arm")
-                angles = "0 0 0 0 0 0"
+                angles = "0 0 20 0 0 0"
                 self.serialConnection.write(angles)
                 time.sleep(2.0)
                 break
@@ -98,20 +99,22 @@ class LeapListener(Leap.Listener):
             if self.previous_wrist_position != Leap.Vector(0,0,0):
                 wrist_movement_direction = hand.arm.wrist_position - self.previous_wrist_position; 
  
+            
+            self.previous_wrist_position = hand.arm.wrist_position
+
             # Call Richard's math function
             #theta_values = end_effector_position(hand.arm.wrist_position, hand.direction)
 
             theta1, theta2 = calculateInverseKinematics(hand.arm.wrist_position.y, -hand.arm.wrist_position.z)
            
             if self.is_fist(hand) == True:
-                pincer_value = 40
+                pincer_value = PINCER_ANGLE
             else:
                 pincer_value = 0
 
 
             angles = "0 " + str(theta1) + " " + str(20+theta1) + " " + str(theta2/3) + " " + "0 " + str(pincer_value)
 
-            self.previous_wrist_position = hand.arm.wrist_position
 
             #angles.strip()
             print(angles)
