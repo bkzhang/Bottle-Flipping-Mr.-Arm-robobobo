@@ -88,7 +88,8 @@ class LeapListener(Leap.Listener):
             if theta_values == None:
                 return
 
-            angles = ''
+            angles = str(theta_values).strip("[]") 
+     
             # compare to previous angles
             # angle_adjusted limit the delta values
             if self.serialConnection == None:
