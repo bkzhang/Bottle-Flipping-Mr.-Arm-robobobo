@@ -5,6 +5,8 @@ sys.path.insert(0, "../lib/x64")
 import Leap, thread, time, serial
 from Leap import CircleGesture, KeyTapGesture, ScreenTapGesture, SwipeGesture
 
+from inverse_kinematics import end_effector_position
+
 PRINT = 0
 
 COM_PORT = 'COM3'
@@ -14,15 +16,16 @@ class LeapListener(Leap.Listener):
     finger_names = ['Thumb', 'Index', 'Middle', 'Ring', 'Pinky']
     bone_names = ['Metacarpal', 'Proximal', 'Intermediate', 'Distal']
     state_names = ['STATE_INVALID', 'STATE_START', 'STATE_UPDATE', 'STATE_END']
-    serialConnection = None 
-    previous_angles = []
 
     def on_init(self, controller):
         print "Initialized"
+        self.serialConnection = None 
+        self.previous_angles = []
 
     def on_connect(self, controller):
         print "Connected"
-        serialConnection = serial.Serial(COM_PORT, BAUD_RATE)
+        self.serialConnection = serial.Serial(COM_PORT, BAUD_RATE)
+        
 
     def on_disconnect(self, controller):
         # Note: not dispatched when running in a debugger.
@@ -81,10 +84,17 @@ class LeapListener(Leap.Listener):
             # the yaw can be deduced from this
             
             # Call Richard's math function
+            theta_values = end_effector_position(hand.arm.wrist_position, hand.direction)
+            if theta_values == None:
+                return
+
             angles = ''
-            previous_angles # compare to previous angles
-            angle_adjusted # limit the delta values
-            serialConnection.write(angles)
+            # compare to previous angles
+            # angle_adjusted limit the delta values
+            if self.serialConnection == None:
+                print("No serial connection")
+            else:
+                self.serialConnection.write(angles)
 
     def state_string(self, state):
         if state == Leap.Gesture.STATE_START:
