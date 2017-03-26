@@ -58,8 +58,8 @@ class LeapListener(Leap.Listener):
         return True # Hand is making a fist
 
     def angle(self, hand):
-        if self.is_fist(hand) is True:
-            return '180'
+        if self.is_fist(hand) == True:
+            return '40' #closed
         else:
             return '0'
 
