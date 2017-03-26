@@ -73,6 +73,17 @@ def end_effector_position(wrist_position, hand_direction): # z, y are the coordi
                 print("hand_direction.z: ", hand_direction.z)
                 print("hand_direction.y: ", hand_direction.y)
 
+	if theta_1 > 180:
+		theta_1 = 180
+	elif theta_1 < -180:
+		theta_1 = -180
+
+	if theta_2 > 180:
+		theta_2 = 180
+	elif theta_2 < -180:
+		theta_2 = -180
+	theta_3 = 0
+
 	print("theta_1: ", theta_1)
 	print("theta_2: ", theta_2)
 	print("theta_3: ", theta_3)

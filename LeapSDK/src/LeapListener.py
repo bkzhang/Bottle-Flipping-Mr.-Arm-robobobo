@@ -59,7 +59,7 @@ class LeapListener(Leap.Listener):
 
     def angle(self, hand):
         if self.is_fist(hand) == True:
-            return '(' #closed, 40 degrees in ascii
+            return '40' #closed
         else:
             return '0'
 
@@ -93,20 +93,24 @@ class LeapListener(Leap.Listener):
             if theta_values == None:
                 return
 
+            # Call Richard's math function
+            theta_values = end_effector_position(hand.arm.wrist_position, hand.direction)
+            if theta_values == None:
+                return
+
             if self.is_fist(hand) == True:
                 pincer_value = 40
             else:
-                pincer_value = 0;
-            angles =  "0" + chr(theta_values[0]) + chr(5+theta_values[0]) + chr(theta_values[1]) + chr(theta_values[2]) + chr(0) + chr(pincer_value) 
-  
-          # compare to previous angles
-            # angle_adjusted limit the delta values
-            if self.serialConnection == None:
-                print("No serial connection")
-            else:
-                print(type(angles))
-                print(angles)
-                self.serialConnection.write(angles.encode())
+                pincer_value = 0
+
+            angles =  chr(0) + chr(theta_values[0]) + chr(5+theta_values[0]) + chr(theta_values[1]) + chr(theta_values[2]) + chr(0) + chr(pincer_value)
+
+            angles = "0 " + str(theta_values[0]) + " " + str(5+theta_values[0]) + " " + str(theta_values[1]) + " " + "0 " + str(pincer_value)
+
+            #angles.strip()
+            print(angles)
+            self.serialConnection.write(angles)
+            time.sleep(1.6)
 
     def state_string(self, state):
         if state == Leap.Gesture.STATE_START:
