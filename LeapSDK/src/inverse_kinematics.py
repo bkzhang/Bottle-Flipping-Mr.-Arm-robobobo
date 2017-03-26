@@ -90,15 +90,15 @@ def end_effector_position(wrist_position, hand_direction): # z, y are the coordi
 
 	return [theta_1, theta_2, theta_3]
 
-
+# 
 def calculateInverseKinematics(y,z): 
   hyp = math.sqrt((y**2)+(z**2))
   a = math.atan(y/z)
-  b = math.acos(BASE**2 + hyp**2 - MIDDLE**2)/(2*BASE*hyp)
+  b = math.acos((BASE**2 + hyp**2 - MIDDLE**2)/(2*BASE*hyp))
   theta1 = math.degrees(a+b);
 
-  // Get second angle
+  # Get second angle
   c = math.acos((MIDDLE**2+BASE**2-hyp**2)/(2*BASE*MIDDLE))
   theta2 = 180 - math.degrees(c);
   
-  return theta1, theta2
+  return [theta1, theta2]

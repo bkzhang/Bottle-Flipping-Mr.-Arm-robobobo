@@ -5,11 +5,12 @@ sys.path.insert(0, "../lib/x64")
 import Leap, thread, time, serial
 from Leap import CircleGesture, KeyTapGesture, ScreenTapGesture, SwipeGesture
 
-from inverse_kinematics import end_effector_position
+from inverse_kinematics import end_effector_position, calculateInverseKinematics
+
 
 PRINT = 0
 
-COM_PORT = '/dev/ttyUSB4'
+COM_PORT = '/dev/ttyUSB5'
 BAUD_RATE = 9600
 
 class LeapListener(Leap.Listener):
@@ -98,18 +99,17 @@ class LeapListener(Leap.Listener):
                 wrist_movement_direction = hand.arm.wrist_position - self.previous_wrist_position; 
  
             # Call Richard's math function
-            theta_values = end_effector_position(hand.arm.wrist_position, hand.direction)
-            if theta_values == None:
-                return
+            #theta_values = end_effector_position(hand.arm.wrist_position, hand.direction)
 
+            theta1, theta2 = calculateInverseKinematics(hand.arm.wrist_position.y, -hand.arm.wrist_position.z)
+           
             if self.is_fist(hand) == True:
                 pincer_value = 40
             else:
                 pincer_value = 0
 
-            angles =  chr(0) + chr(theta_values[0]) + chr(20+theta_values[0]) + chr(theta_values[1]) + chr(theta_values[2]) + chr(0) + chr(pincer_value)
 
-            angles = "0 " + str(theta_values[0]) + " " + str(20+theta_values[0]) + " " + str(theta_values[1]/3) + " " + "0 " + str(pincer_value)
+            angles = "0 " + str(theta1) + " " + str(20+theta1) + " " + str(theta2/3) + " " + "0 " + str(pincer_value)
 
             self.previous_wrist_position = hand.arm.wrist_position
 
