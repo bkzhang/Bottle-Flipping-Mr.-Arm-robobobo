@@ -15,6 +15,8 @@ class LeapListener(Leap.Listener):
     bone_names = ['Metacarpal', 'Proximal', 'Intermediate', 'Distal']
     state_names = ['STATE_INVALID', 'STATE_START', 'STATE_UPDATE', 'STATE_END']
     serialConnection = None 
+    previous_angles = []
+
     def on_init(self, controller):
         print "Initialized"
 
@@ -80,6 +82,8 @@ class LeapListener(Leap.Listener):
             
             # Call Richard's math function
             angles = ''
+            previous_angles # compare to previous angles
+            angle_adjusted # limit the delta values
             serialConnection.write(angles)
 
     def state_string(self, state):
