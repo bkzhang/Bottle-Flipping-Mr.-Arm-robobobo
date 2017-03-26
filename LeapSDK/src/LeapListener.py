@@ -9,9 +9,11 @@ from inverse_kinematics import end_effector_position, calculateInverseKinematics
 
 
 PRINT = 0
-PINCER_ANGLE = 55
+PINCER_ANGLE = 50
+VEL_SCALE = 0.4
+FRAME_PAUSE = 1.6 # in seconds
 
-COM_PORT = '/dev/ttyUSB6'
+COM_PORT = '/dev/ttyUSB0'
 BAUD_RATE = 9600
 
 class LeapListener(Leap.Listener):
@@ -26,6 +28,7 @@ class LeapListener(Leap.Listener):
         self.previous_wrist_position = Leap.Vector(0,0,0)
         self.theta1 = 0;
         self.theta2 = 0;
+        self.theta3 = 0;
 
     def on_connect(self, controller):
         print "Connected"
@@ -104,9 +107,9 @@ class LeapListener(Leap.Listener):
                 wrist_movement_direction = hand.arm.wrist_position - self.previous_wrist_position; 
             
             # move it forward
-            self.theta1 = self.theta1 - wrist_movement_direction.z*1
-            self.theta2 = self.theta2 + wrist_movement_direction.y*1
-
+            self.theta1 = self.theta1 - wrist_movement_direction.z*VEL_SCALE
+            self.theta2 = self.theta2 - wrist_movement_direction.y*VEL_SCALE
+            #self.theta3 = self.theta3 - wrist_movement_direction.y*VEL_SCALE
             print(wrist_movement_direction)
             
             self.previous_wrist_position = hand.arm.wrist_position
@@ -128,5 +131,5 @@ class LeapListener(Leap.Listener):
             #angles.strip()
             print(angles)
             self.serialConnection.write(angles)
-            time.sleep(1.6)
+            time.sleep(FRAME_PAUSE)
 
