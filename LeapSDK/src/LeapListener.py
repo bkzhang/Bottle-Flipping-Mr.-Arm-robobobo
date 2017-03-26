@@ -9,7 +9,7 @@ from inverse_kinematics import end_effector_position
 
 PRINT = 0
 
-COM_PORT = '/dev/ttyUSB1'
+COM_PORT = '/dev/ttyUSB4'
 BAUD_RATE = 9600
 
 class LeapListener(Leap.Listener):
@@ -21,6 +21,7 @@ class LeapListener(Leap.Listener):
         print "Initialized"
         self.serialConnection = None 
         self.previous_angles = []
+        self.previous_wrist_position = Leap.Vector(0,0,0)
 
     def on_connect(self, controller):
         print "Connected"
@@ -72,11 +73,16 @@ class LeapListener(Leap.Listener):
 
             # No left hand inputs allowed
             if hand.is_left: 
+                # if a left hand is detected, then reset
+                print("Left hand shown, reset robot arm")
+                angles = "0 0 0 0 0 0"
+                self.serialConnection.write(angles)
+                time.sleep(2.0)
                 break
  
             # We need to return the palm position, or alternatively the wrist position
             hand.palm_position
-            hand.arm.wrist_position
+            
             
             # We need to return direction vector of the hand
             hand.direction
@@ -87,12 +93,10 @@ class LeapListener(Leap.Listener):
             # We need to return the direction vector of the arm
             hand.arm.direction
             # the yaw can be deduced from this
-            
-            # Call Richard's math function
-            theta_values = end_effector_position(hand.arm.wrist_position, hand.direction)
-            if theta_values == None:
-                return
 
+            if self.previous_wrist_position != Leap.Vector(0,0,0):
+                wrist_movement_direction = hand.arm.wrist_position - self.previous_wrist_position; 
+ 
             # Call Richard's math function
             theta_values = end_effector_position(hand.arm.wrist_position, hand.direction)
             if theta_values == None:
@@ -105,23 +109,12 @@ class LeapListener(Leap.Listener):
 
             angles =  chr(0) + chr(theta_values[0]) + chr(20+theta_values[0]) + chr(theta_values[1]) + chr(theta_values[2]) + chr(0) + chr(pincer_value)
 
-            angles = "0 " + str(theta_values[0]) + " " + str(20+theta_values[0]) + " " + str(theta_values[1]) + " " + "0 " + str(pincer_value)
+            angles = "0 " + str(theta_values[0]) + " " + str(20+theta_values[0]) + " " + str(theta_values[1]/3) + " " + "0 " + str(pincer_value)
+
+            self.previous_wrist_position = hand.arm.wrist_position
 
             #angles.strip()
             print(angles)
             self.serialConnection.write(angles)
             time.sleep(1.6)
-
-    def state_string(self, state):
-        if state == Leap.Gesture.STATE_START:
-            return "STATE_START"
-
-        if state == Leap.Gesture.STATE_UPDATE:
-            return "STATE_UPDATE"
-
-        if state == Leap.Gesture.STATE_STOP:
-            return "STATE_STOP"
-
-        if state == Leap.Gesture.STATE_INVALID:
-            return "STATE_INVALID"
 
