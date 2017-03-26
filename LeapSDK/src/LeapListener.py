@@ -51,6 +51,7 @@ class LeapListener(Leap.Listener):
                 thumb_distal = finger.bone(3)
                 if thumb_distal.direction.x < 0:
                     #print("Right thumb is pointing right")
+                    print("");
                 else:
                     #print("Right thumb is pointing left")
                     return False
@@ -59,6 +60,7 @@ class LeapListener(Leap.Listener):
                 #print(distal.direction)
                 if distal.direction.z < 0:
                     #print("finger is pointing towards user")
+                    print("");
                 else:
                     #print("finger is pointing away from user")
                     return False

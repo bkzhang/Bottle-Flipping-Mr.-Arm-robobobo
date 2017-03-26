@@ -19,14 +19,14 @@ class RobotArm():
 
 		if _arm_angle > 90:
 			arm_angle = 90
-		else if _arm_angle < 0:
+		elif _arm_angle < 0:
 			arm_angle = 0
 		else:	
 			arm_angle = _arm_angle 
 
 		if _base_rotation_angle > 45:
 			base_rotation_agle = 45
-		else if _base_rotation_angle < -45
+		elif _base_rotation_angle < -45:
 			base_rotation_agle = -45
 		else:
 			base_rotation_angle = _base_rotation_angle
