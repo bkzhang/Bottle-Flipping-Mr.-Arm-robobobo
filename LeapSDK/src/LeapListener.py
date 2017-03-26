@@ -24,6 +24,8 @@ class LeapListener(Leap.Listener):
         self.serialConnection = None 
         self.previous_angles = []
         self.previous_wrist_position = Leap.Vector(0,0,0)
+        self.theta1 = 0;
+        self.theta2 = 0;
 
     def on_connect(self, controller):
         print "Connected"
@@ -96,16 +98,23 @@ class LeapListener(Leap.Listener):
             hand.arm.direction
             # the yaw can be deduced from this
 
+            wrist_movement_direction = Leap.Vector(0,0,0)
+
             if self.previous_wrist_position != Leap.Vector(0,0,0):
                 wrist_movement_direction = hand.arm.wrist_position - self.previous_wrist_position; 
- 
+            
+            # move it forward
+            self.theta1 = self.theta1 - wrist_movement_direction.z*1
+            self.theta2 = self.theta2 + wrist_movement_direction.y*1
+
+            print(wrist_movement_direction)
             
             self.previous_wrist_position = hand.arm.wrist_position
 
             # Call Richard's math function
             #theta_values = end_effector_position(hand.arm.wrist_position, hand.direction)
 
-            theta1, theta2 = calculateInverseKinematics(hand.arm.wrist_position.y, -hand.arm.wrist_position.z)
+            #theta1, theta2 = calculateInverseKinematics(hand.arm.wrist_position.y, -hand.arm.wrist_position.z)
            
             if self.is_fist(hand) == True:
                 pincer_value = PINCER_ANGLE
@@ -113,7 +122,7 @@ class LeapListener(Leap.Listener):
                 pincer_value = 0
 
 
-            angles = "0 " + str(theta1) + " " + str(20+theta1) + " " + str(theta2/3) + " " + "0 " + str(pincer_value)
+            angles = "0 " + str(self.theta1) + " " + str(20+self.theta1) + " " + str(self.theta2) + " " + "0 " + str(pincer_value)
 
 
             #angles.strip()
