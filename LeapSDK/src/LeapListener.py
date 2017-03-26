@@ -2,25 +2,27 @@ import os, sys
 sys.path.insert(0, "../lib")
 sys.path.insert(0, "../lib/x64")
 
-import Leap, thread, time
+import Leap, thread, time, serial
 from Leap import CircleGesture, KeyTapGesture, ScreenTapGesture, SwipeGesture
 
 PRINT = 0
 
+COM_PORT = 'COM3'
+BAUD_RATE = 9600
+
 class LeapListener(Leap.Listener):
     finger_names = ['Thumb', 'Index', 'Middle', 'Ring', 'Pinky']
     bone_names = ['Metacarpal', 'Proximal', 'Intermediate', 'Distal']
-    state_names = ['STATE_INVALID', 'STATE_START', 'STATE_UPDATE', 'STATE_END'] 
+    state_names = ['STATE_INVALID', 'STATE_START', 'STATE_UPDATE', 'STATE_END']
+    serialConnection = None 
+    previous_angles = []
+
     def on_init(self, controller):
         print "Initialized"
 
     def on_connect(self, controller):
         print "Connected"
-        # Enable gestures
-        controller.enable_gesture(Leap.Gesture.TYPE_CIRCLE);
-        controller.enable_gesture(Leap.Gesture.TYPE_KEY_TAP);
-        controller.enable_gesture(Leap.Gesture.TYPE_SCREEN_TAP);
-        controller.enable_gesture(Leap.Gesture.TYPE_SWIPE);
+        serialConnection = serial.Serial(COM_PORT, BAUD_RATE)
 
     def on_disconnect(self, controller):
         # Note: not dispatched when running in a debugger.
@@ -78,6 +80,12 @@ class LeapListener(Leap.Listener):
             hand.arm.direction
             # the yaw can be deduced from this
             
+            # Call Richard's math function
+            angles = ''
+            previous_angles # compare to previous angles
+            angle_adjusted # limit the delta values
+            serialConnection.write(angles)
+
     def state_string(self, state):
         if state == Leap.Gesture.STATE_START:
             return "STATE_START"
