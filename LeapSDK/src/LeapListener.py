@@ -9,7 +9,7 @@ from inverse_kinematics import end_effector_position
 
 PRINT = 0
 
-COM_PORT = 'COM3'
+COM_PORT = '/dev/ttyUSB1'
 BAUD_RATE = 9600
 
 class LeapListener(Leap.Listener):
@@ -90,20 +90,23 @@ class LeapListener(Leap.Listener):
             
             # Call Richard's math function
             theta_values = end_effector_position(hand.arm.wrist_position, hand.direction)
-            theta_values[1] += 5
             if theta_values == None:
                 return
 
-            _t = str(theta_values).strip("[]").split(",")
-            angles =  "0" + _t[0]*2 + _t[1] + _t[2] + self.angle(hand) 
-            angles = angles.replace(" ", "")
-     
-            # compare to previous angles
+            if self.is_fist(hand) == True:
+                pincer_value = 40
+            else:
+                pincer_value = 0;
+            angles =  "0" + chr(theta_values[0]) + chr(5+theta_values[0]) + chr(theta_values[1]) + chr(theta_values[2]) + chr(0) + chr(pincer_value) 
+  
+          # compare to previous angles
             # angle_adjusted limit the delta values
             if self.serialConnection == None:
                 print("No serial connection")
             else:
-                self.serialConnection.write(angles)
+                print(type(angles))
+                print(angles)
+                self.serialConnection.write(angles.encode())
 
     def state_string(self, state):
         if state == Leap.Gesture.STATE_START:
