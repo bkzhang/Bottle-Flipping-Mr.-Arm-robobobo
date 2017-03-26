@@ -75,7 +75,7 @@ class LeapListener(Leap.Listener):
             self.is_fist(hand)
 
             # We need to return the direction vector of the arm
-            arm = hand.arm.direction
+            hand.arm.direction
             # the yaw can be deduced from this
             
     def state_string(self, state):
