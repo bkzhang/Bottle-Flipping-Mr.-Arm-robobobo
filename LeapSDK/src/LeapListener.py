@@ -59,7 +59,7 @@ class LeapListener(Leap.Listener):
 
     def angle(self, hand):
         if self.is_fist(hand) == True:
-            return '(' #closed, 40 degrees in ascii
+            return '40' #closed
         else:
             return '0'
 
@@ -95,8 +95,7 @@ class LeapListener(Leap.Listener):
                 return
 
             _t = str(theta_values).strip("[]").split(",")
-            angles =  "0" + _t[0]*2 + _t[1] + _t[2] + self.angle(hand) 
-            angles = angles.replace(" ", "")
+            angles =  "0, " + _t[0] + ", " + _t[1] + ", " + _t[2] + ", " + self.angle(hand)  
      
             # compare to previous angles
             # angle_adjusted limit the delta values
