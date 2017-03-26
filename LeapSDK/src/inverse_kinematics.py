@@ -55,14 +55,11 @@ def end_effector_position(wrist_position, hand_direction): # z, y are the coordi
 
 	l = (MIDDLE*math.sin(beta))/math.sin(theta_1 - alpha)
 	x = [BASE*math.cos(theta_1), l*math.cos(alpha), z]
-	y = [BASE*math.sin(theta_1), l*math.sin(alpha), y]
+	_y = [BASE*math.sin(theta_1), l*math.sin(alpha), y]
 	print('x:', x)
-	print('y:', y)
+	print('y:', _y)
 	
-	#x = str(x).strip("[]\"")
-	#y = str(y).strip("[]\"")
-	#data = [x, y]
-	xy = x + y
+	xy = x + _y
 
 	with open('data.csv', 'a') as csvfile:
 		writer = csv.writer(csvfile, delimiter=',')
