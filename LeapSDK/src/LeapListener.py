@@ -59,7 +59,7 @@ class LeapListener(Leap.Listener):
 
     def angle(self, hand):
         if self.is_fist(hand) == True:
-            return '40' #closed
+            return '(' #closed, 40 degrees in ascii
         else:
             return '0'
 
@@ -90,10 +90,13 @@ class LeapListener(Leap.Listener):
             
             # Call Richard's math function
             theta_values = end_effector_position(hand.arm.wrist_position, hand.direction)
+            theta_values[1] += 5
             if theta_values == None:
                 return
 
-            angles =  self.angle(hand) + ', ' + str(theta_values).strip("[]") 
+            _t = str(theta_values).strip("[]").split(",")
+            angles =  "0" + _t[0]*2 + _t[1] + _t[2] + self.angle(hand) 
+            angles = angles.replace(" ", "")
      
             # compare to previous angles
             # angle_adjusted limit the delta values
