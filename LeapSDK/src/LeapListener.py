@@ -57,6 +57,11 @@ class LeapListener(Leap.Listener):
         print("Fist detected")
         return True # Hand is making a fist
 
+    def angle(self, hand):
+        if self.is_fist(hand) is True:
+            return '180'
+        else:
+            return '0'
 
     def on_frame(self, controller):
         # Get the most recent frame and report some basic information
@@ -88,7 +93,7 @@ class LeapListener(Leap.Listener):
             if theta_values == None:
                 return
 
-            angles = str(theta_values).strip("[]") 
+            angles =  self.angle(hand) + ', ' + str(theta_values).strip("[]") 
      
             # compare to previous angles
             # angle_adjusted limit the delta values
