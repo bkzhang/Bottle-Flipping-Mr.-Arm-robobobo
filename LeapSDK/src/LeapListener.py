@@ -103,9 +103,9 @@ class LeapListener(Leap.Listener):
             else:
                 pincer_value = 0
 
-            angles =  chr(0) + chr(theta_values[0]) + chr(5+theta_values[0]) + chr(theta_values[1]) + chr(theta_values[2]) + chr(0) + chr(pincer_value)
+            angles =  chr(0) + chr(theta_values[0]) + chr(20+theta_values[0]) + chr(theta_values[1]) + chr(theta_values[2]) + chr(0) + chr(pincer_value)
 
-            angles = "0 " + str(theta_values[0]) + " " + str(5+theta_values[0]) + " " + str(theta_values[1]) + " " + "0 " + str(pincer_value)
+            angles = "0 " + str(theta_values[0]) + " " + str(20+theta_values[0]) + " " + str(theta_values[1]) + " " + "0 " + str(pincer_value)
 
             #angles.strip()
             print(angles)
