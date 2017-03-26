@@ -61,11 +61,11 @@ def end_effector_position(wrist_position, hand_direction): # z, y are the coordi
 	
 	xy = x + _y
 
-	with open('data.csv', 'a') as csvfile:
-		writer = csv.writer(csvfile, delimiter=',')
-		writer.writerow(xy)	
+	#with open('data.csv', 'a') as csvfile:
+		#writer = csv.writer(csvfile, delimiter=',')
+		#writer.writerow(xy)	
 
-	if DEBUG == 1:
+	if DEBUG == 0:
 		print("r_squared: ", r_squared)
 		print("BASE: ", BASE)
 		print("phi (degrees): ", int(math.degrees(phi)))

@@ -34,7 +34,7 @@ class LeapListener(Leap.Listener):
     def on_exit(self, controller):
         print "Exited"
 
-    # For some reason the axis are reversed
+    # For some reason the axis are reversed?? works for now
     def is_fist(self, hand):
         for finger in hand.fingers: # skip the thumb
             if self.finger_names[finger.type] == "Thumb": # skip thumb
