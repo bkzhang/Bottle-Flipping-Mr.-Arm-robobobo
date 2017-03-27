@@ -41,10 +41,10 @@ We encountered a LOT of problems, and most of them near demo.
 2. The only laptop that could pair with the bluetooth shield of the Arduino could not actually connect to it so we resorted to using serial as time constraint would not permit an extensive fix for this.
 3. The Arduino only properly processed inputs with a delay of 1.6 seconds so we fixed the python script to sleep 1.6 seconds after every output. 
 ###### One hour till demo
-3. The batteries could not handle the volts required to run the motors so we switched to a power adaptor.
-4. The lower body became unglued so we drilled a hole to more securely attach it.
-5. The servo motor died so we reassembled the pieces to replace the servo motor.
-6. The adaptor wires weren't functioning. We confirmed it by testing out its output voltage so we cut the wires before reattaching them.
+4. The batteries could not handle the volts required to run the motors so we switched to a power adaptor.
+5. The lower body became unglued so we drilled a hole to more securely attach it.
+6. The servo motor died so we reassembled the pieces to replace the servo motor.
+7. The adaptor wires weren't functioning. We confirmed it by testing out its output voltage so we cut the wires before reattaching them.
 ###### Yay it works
 
 [Devpost](https://devpost.com/software/roboarm-b73mkp)
