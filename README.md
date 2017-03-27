@@ -3,6 +3,8 @@ SpaceArm
 
 Made during McGill's Robohacks, the SpaceArm project is a scaled down and simplified prototype of a robotic arm designed to simplify object manipulation in outerspace.
 
+![alt text](https://github.com/bkzhang/SpaceArm/img/moving.gif "SpaceArm moving") 
+
 ### Team members
 [Henry Wang](https://github.com/h397wang "Github") - Waterloo University **_Computer Engineering_**  
 [Haowie Zhao](https://github.com/HaoyiZhao "Github") - McGill University **_Computer Science_**  
