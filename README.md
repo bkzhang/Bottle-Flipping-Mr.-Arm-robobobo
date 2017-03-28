@@ -6,10 +6,12 @@ Made during McGill's Robohacks, the SpaceArm project is a scaled down and simpli
 <a href="https://github.com/bkzhang/spacearm/blob/master/img/closed-arm.jpeg"><img src="https://github.com/bkzhang/spacearm/blob/master/img/closed-arm.jpeg" align="center" width="500" border="20"></a>
 
 ### Team members
-[Henry Wang](https://github.com/h397wang "Github") - Waterloo University **_Computer Engineering_**  
-[Haowie Zhao](https://github.com/HaoyiZhao "Github") - McGill University **_Computer Science_**  
-[Brian Zhang](https://github.com/bkzhang "Github") - Carleton University **_Software Engineering_**  
-[Richard Salas](https://github.com/richard-salaschavez "Github") - University of Toronto **_Mechanical Engineering_**  
+Name | University | Major
+--- | --- | ---
+[Henry Wang](https://github.com/h397wang "Github") | Waterloo University | **_Computer Engineering_**  
+[Haowie Zhao](https://github.com/HaoyiZhao "Github") | McGill University | **_Computer Science_**  
+[Brian Zhang](https://github.com/bkzhang "Github") | Carleton University | **_Software Engineering_**  
+[Richard Salas](https://github.com/richard-salaschavez "Github") | University of Toronto | **_Mechanical Engineering_**  
 Mike Zhang - University of Toronto **_Mechanical Engineering_**  
 Duy-Bao Nguyen - McGill University  
 
