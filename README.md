@@ -3,8 +3,6 @@ SpaceArm
 
 Made during McGill's Robohacks, the SpaceArm project is a scaled down and simplified prototype of a robotic arm designed to simplify object manipulation in outerspace.
 
-![SpaceArm Moving](https://github.com/bkzhang/SpaceArm/blob/master/img/moving.gif "SpaceArm moving") ![Open](https://github.com/bkzhang/SpaceArm/blob/master/img/open.jpeg ("Open") ![Closed](https://github.com/bkzhang/SpaceArm/blob/master/img/closed-arm.jpeg) ![SpaceArm](https://github.com/bkzhang/SpaceArm/blob/master/img/robo1.jpeg)
-
 ### Team members
 [Henry Wang](https://github.com/h397wang "Github") - Waterloo University **_Computer Engineering_**  
 [Haowie Zhao](https://github.com/HaoyiZhao "Github") - McGill University **_Computer Science_**  
@@ -48,3 +46,5 @@ We encountered a LOT of problems, and most of them near demo.
 ###### Yay it works
 
 [Devpost](https://devpost.com/software/roboarm-b73mkp)
+
+![SpaceArm Moving](https://github.com/bkzhang/SpaceArm/blob/master/img/moving.gif "SpaceArm moving") ![Open](https://github.com/bkzhang/SpaceArm/blob/master/img/open.jpeg "Open") ![Closed](https://github.com/bkzhang/SpaceArm/blob/master/img/closed-arm.jpeg) ![SpaceArm](https://github.com/bkzhang/SpaceArm/blob/master/img/robo1.jpeg "SpaceArm")
