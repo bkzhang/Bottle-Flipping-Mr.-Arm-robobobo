@@ -47,4 +47,4 @@ We encountered a LOT of problems, and most of them near demo.
 
 [Devpost](https://devpost.com/software/roboarm-b73mkp)
 
-![SpaceArm Moving](https://github.com/bkzhang/SpaceArm/blob/master/img/moving.gif =250x "SpaceArm moving") ![Open](https://github.com/bkzhang/SpaceArm/blob/master/img/open.jpeg =250x "Open") ![Closed](https://github.com/bkzhang/SpaceArm/blob/master/img/closed-arm.jpeg =250x "Closed Arm") ![SpaceArm](https://github.com/bkzhang/SpaceArm/blob/master/img/robo1.jpeg =250x "SpaceArm")
+![SpaceArm Moving](https://github.com/bkzhang/SpaceArm/blob/master/img/moving.gif "SpaceArm moving") ![Open](https://github.com/bkzhang/SpaceArm/blob/master/img/open.jpeg "Open") ![Closed](https://github.com/bkzhang/SpaceArm/blob/master/img/closed-arm.jpeg "Closed Arm") ![SpaceArm](https://github.com/bkzhang/SpaceArm/blob/master/img/robo1.jpeg "SpaceArm")
