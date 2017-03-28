@@ -12,8 +12,8 @@ Name | University | Major
 [Haowie Zhao](https://github.com/HaoyiZhao "Github") | McGill University | **_Computer Science_**  
 [Brian Zhang](https://github.com/bkzhang "Github") | Carleton University | **_Software Engineering_**  
 [Richard Salas](https://github.com/richard-salaschavez "Github") | University of Toronto | **_Mechanical Engineering_**  
-Mike Zhang - University of Toronto **_Mechanical Engineering_**  
-Duy-Bao Nguyen - McGill University  
+Mike Zhang | University of Toronto | **_Mechanical Engineering_**  
+Duy-Bao Nguyen | McGill University  
 
 ### Specifications
 ###### Software
