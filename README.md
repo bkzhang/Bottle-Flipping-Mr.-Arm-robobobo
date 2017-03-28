@@ -3,7 +3,7 @@ SpaceArm
 
 Made during McGill's Robohacks, the SpaceArm project is a scaled down and simplified prototype of a robotic arm designed to simplify object manipulation in outerspace.
 
-<a href="https://github.com/bkzhang/spacearm/blob/master/img/closed-arm.jpeg"><img src="https://github.com/bkzhang/spacearm/blob/master/img/closed-arm.jpeg" align="center" width="400" border="20"></a>
+<a href="https://github.com/bkzhang/spacearm/blob/master/img/closed-arm.jpeg"><img src="https://github.com/bkzhang/spacearm/blob/master/img/closed-arm.jpeg" align="center" width="500" border="20"></a>
 
 ### Team members
 [Henry Wang](https://github.com/h397wang "Github") - Waterloo University **_Computer Engineering_**  
@@ -49,6 +49,4 @@ We encountered a LOT of problems, and most of them near demo.
 
 [Devpost](https://devpost.com/software/roboarm-b73mkp)
 
-<a href="https://github.com/bkzhang/SpaceArm/blob/master/img/moving.gif"><img src="https://github.com/bkzhang/spacearm/blob/master/img/moving.gif" align="left" width="200" ></a><a href="https://github.com/bkzhang/spacearm/blob/master/img/open.jpeg"><img src="https://github.com/bkzhang/spacearm/blob/master/img/open.jpeg" align="left" width="200" ></a><a href="https://github.com/bkzhang/spacearm/blob/master/img/robo1.jpeg"><img src="https://github.com/bkzhang/spacearm/blob/master/img/robo1.jpeg" align="left" width="200" ></a>
-  
-<a href="https://github.com/bkzhang/spacearm/blob/master/img/closed-arm.jpeg"><img src="https://github.com/bkzhang/spacearm/blob/master/img/closed-arm.jpeg" align="center" width="600" border="20"></a>
+<a href="https://github.com/bkzhang/SpaceArm/blob/master/img/moving.gif"><img src="https://github.com/bkzhang/spacearm/blob/master/img/moving.gif" align="left" width="200" ></a><a href="https://github.com/bkzhang/spacearm/blob/master/img/open.jpeg"><img src="https://github.com/bkzhang/spacearm/blob/master/img/open.jpeg" align="left" width="200" ></a><a href="https://github.com/bkzhang/spacearm/blob/master/img/robo1.jpeg"><img src="https://github.com/bkzhang/spacearm/blob/master/img/robo1.jpeg" align="left" width="200" ></a>  
