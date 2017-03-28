@@ -49,5 +49,4 @@ We encountered a LOT of problems, and most of them near demo.
 
 <a href="https://github.com/bkzhang/SpaceArm/blob/master/img/moving.gif"><img src="https://github.com/bkzhang/spacearm/blob/master/img/moving.gif" align="left" width="200" ></a><a href="https://github.com/bkzhang/spacearm/blob/master/img/open.jpeg"><img src="https://github.com/bkzhang/spacearm/blob/master/img/open.jpeg" align="left" width="200" ></a><a href="https://github.com/bkzhang/spacearm/blob/master/img/robo1.jpeg"><img src="https://github.com/bkzhang/spacearm/blob/master/img/robo1.jpeg" align="left" width="200" ></a>
   
-
-<a href="https://github.com/bkzhang/spacearm/blob/master/img/closed-arm.jpeg"><img src="https://github.com/bkzhang/spacearm/blob/master/img/closed-arm.jpeg" align="center" width="800" ></a>
+<a href="https://github.com/bkzhang/spacearm/blob/master/img/closed-arm.jpeg"><img src="https://github.com/bkzhang/spacearm/blob/master/img/closed-arm.jpeg" align="center" width="600" border="20"></a>
